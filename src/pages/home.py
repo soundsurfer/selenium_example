@@ -1,5 +1,6 @@
 from .base_page import BasePage
 from src.elements.header import Header
+from src.elements.filters import Filters
 from src.elements.container import Container
 from src.elements.pagination import Pagination
 
@@ -11,6 +12,10 @@ class HomePage(BasePage):
   @property
   def header(self):
     return Header(self.driver)
+  
+  @property
+  def filters(self):
+    return Filters(self.driver)
 
   @property
   def card_container(self):

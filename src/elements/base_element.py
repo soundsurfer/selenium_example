@@ -26,3 +26,12 @@ class BaseElement:
 
   def is_all_clickable(self, locator: tuple, wait: int = 10):
     return all(self.is_clickable(elmt, wait=wait) for elmt in self.driver.find_elements(*locator))
+  
+  def is_elem_text_eq(self, locator: tuple, exp_text: str, wait: int = 10):
+    return WebDriverWait(self.driver, wait).until(EC.text_to_be_present_in_element(locator, exp_text))
+
+  def is_elem_has_attr(self, locator: tuple, attr: str, wait: int = 10):
+    return WebDriverWait(self.driver, wait).until(EC.element_attribute_to_include(locator, attr))
+  
+  def is_elem_attr_has_text(self, locator: tuple, attr: str, exp_val: str, wait: int = 10):
+    return WebDriverWait(self.driver, wait).until(EC.text_to_be_present_in_element_attribute(locator, attr, exp_val))

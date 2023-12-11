@@ -6,3 +6,6 @@ class BasePage:
 
   def open(self, path):
     self.driver.get(f"https://practicesoftwaretesting.com/{path}")
+
+  def close(self):
+    self.driver.close()
